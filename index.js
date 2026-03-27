@@ -3,11 +3,21 @@ const fetchData = async () => {
 	const productList = await response.json();
 	return productList;
 };
-const cartList = [];
-const init = async () => {
-	const productList = await fetchData();
 
-	renderProduct(productList);
+ cartList = [];
+
+console.log(cartList);
+const init = async () => {
+	let storedProductlist;
+	storedProductlist = JSON.parse(localStorage.getItem("products"));
+
+	if (!storedProductlist) {
+		const productList = await fetchData();
+		localStorage.setItem("products", JSON.stringify(productList));
+		storedProductlist = productList;
+	}
+
+	renderProduct(storedProductlist);
 	const addToCartBtn = document.querySelectorAll(".product-btn");
 
 	window.addEventListener("resize", updateImages);
@@ -23,6 +33,7 @@ function renderProduct(products) {
 	const productContainer = document.getElementById("product-container");
 
 	products.forEach((product) => {
+
 		let card = document.createElement("div");
 		card.classList.add("product-card");
 		card.innerHTML = `
@@ -68,6 +79,7 @@ function addBtnEvenListerner(buttons) {
 
 			const imageUrl = new URL(card.querySelector(".img-product").src);
 			const imagePath = imageUrl.pathname;
+
 			let existingProduct = cartList.find((item) => item.name === name);
 
 			if (existingProduct) {
@@ -83,6 +95,8 @@ function addBtnEvenListerner(buttons) {
 				mathCard.style.display = "flex";
 				quantitySpan.textContent = 1;
 				cartList.push(cartItem);
+			
+				
 			}
 
 			renderCart(cartList);
