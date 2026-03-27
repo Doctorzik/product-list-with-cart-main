@@ -43,7 +43,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Github](https://github.com/Doctorzik/product-list-with-cart-main)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Add live site URL here](https://shop-cart-zik.netlify.app/)
 
 ## My process
 
@@ -73,7 +73,7 @@ Users should be able to:
 ## Author
 
 - Website - [Jeremiah Ezekiel](https://zik.netlify.app/)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/doctorzik)
+- Frontend Mentor - [@doctorzik](https://www.frontendmentor.io/profile/doctorzik)
 
 
 
