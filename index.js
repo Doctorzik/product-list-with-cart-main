@@ -65,8 +65,9 @@ function addBtnEvenListerner(buttons) {
 			const quantitySpan = card.querySelector(".quantity");
 			const imageCard = (card.querySelector(".img-product").style.border =
 				"2px solid red");
-			const imgae = card.querySelector(".img-product ").src.substring(21);
 
+			const imageUrl = new URL(card.querySelector(".img-product").src);
+			const imagePath = imageUrl.pathname;
 			let existingProduct = cartList.find((item) => item.name === name);
 
 			if (existingProduct) {
@@ -76,7 +77,7 @@ function addBtnEvenListerner(buttons) {
 					name: name,
 					price: price,
 					quantity: 1,
-					image: `.${imgae}`,
+					image: imagePath,
 				};
 				addToCartBtn.style.display = "none";
 				mathCard.style.display = "flex";
@@ -238,12 +239,11 @@ function renderCart(cartItemm) {
 
 	const confirmOrder = document.querySelector("#confirm-order-btn");
 
-	 if(confirmOrder) confirmOrder.addEventListener("click", () => {
-	
-	
-		const dialogElement = document.createElement("dialog");
+	if (confirmOrder)
+		confirmOrder.addEventListener("click", () => {
+			const dialogElement = document.createElement("dialog");
 
-		dialogElement.innerHTML = `
+			dialogElement.innerHTML = `
 						 <div>
 						    <img class="checkmark"  src="./assets/images/icon-order-confirmed.svg" />
 								<h2 class="confirm-heading">Order Confirmed</h2>
@@ -278,24 +278,24 @@ function renderCart(cartItemm) {
 
 						`;
 
-		document.body.append(dialogElement);
-		dialogElement.showModal();
-		const closeModalBtn = dialogElement.querySelector("#close-modal");
-	
-		closeModalBtn.addEventListener("click", () => {
-			dialogElement.close();
+			document.body.append(dialogElement);
+			dialogElement.showModal();
+			const closeModalBtn = dialogElement.querySelector("#close-modal");
 
-			cartItemm.length = 0
-		 const productCards = document.querySelectorAll(".product-card");
-			productCards.forEach((card) => {
-				card.querySelector(".product-btn").style.display = "flex";
-				card.querySelector(".math-card").style.display = "none";
-				card.querySelector(".quantity").textContent = "1";
-				card.querySelector(".img-product").style.border = "";
+			closeModalBtn.addEventListener("click", () => {
+				dialogElement.close();
+
+				cartItemm.length = 0;
+				const productCards = document.querySelectorAll(".product-card");
+				productCards.forEach((card) => {
+					card.querySelector(".product-btn").style.display = "flex";
+					card.querySelector(".math-card").style.display = "none";
+					card.querySelector(".quantity").textContent = "1";
+					card.querySelector(".img-product").style.border = "";
+				});
+				console.log(cartList);
+				console.log(cartItemm);
+				renderCart(cartList);
 			});
-			console.log(cartList)
-			console.log(cartItemm)
-			renderCart(cartList)
 		});
-	});
 }

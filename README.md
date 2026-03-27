@@ -42,7 +42,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Github](https://github.com/Doctorzik/product-list-with-cart-main)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
@@ -72,7 +72,7 @@ Users should be able to:
 
 ## Author
 
-- Website - [Jeremiah Ezekiel](https://)
+- Website - [Jeremiah Ezekiel](https://zik.netlify.app/)
 - Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/doctorzik)
 
 
